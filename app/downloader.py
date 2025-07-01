@@ -22,7 +22,13 @@ class Downloader:
             try:
                 # Verificar ffmpeg y ffprobe
                 if not self._check_ffmpeg():
-                    callback(False, "No se encontró ffmpeg o ffprobe en el PATH del sistema. Instala ffmpeg y reinicia la aplicación.")
+                    callback(
+                        False,
+                        "No se encontró ffmpeg o ffprobe en el PATH del sistema.\n"
+                        "Descarga e instala desde:\n"
+                        "https://github.com/icedterminal/ffmpeg-installer/releases/ (recomendado: FFmpeg_Essentials.msi)\n"
+                        "Luego reinicia la aplicación."
+                    )
                     return
 
                 # Obtener duración total con ffprobe

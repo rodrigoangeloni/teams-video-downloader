@@ -4,6 +4,8 @@ from app.downloader import Downloader
 from app.utils import generar_nombre_archivo, extraer_url_videomanifest
 
 import threading
+import os
+import sys
 
 class AppUI:
     def __init__(self):
@@ -64,6 +66,14 @@ class AppUI:
         self.root.resizable(True, True)
         self.root.configure(bg="#f4f6fb")
 
+        # Establecer icono de la ventana
+        icon_path = os.path.join(os.path.dirname(sys.argv[0]), "ico", "favicon.ico")
+        if os.path.exists(icon_path):
+            try:
+                self.root.iconbitmap(icon_path)
+            except Exception:
+                pass
+
         style = ttk.Style(self.root)
         style.theme_use("clam")
         style.configure("TFrame", background="#f4f6fb")
@@ -97,6 +107,20 @@ class AppUI:
 
         self.label_desc = ttk.Label(frame, text=self.idiomas[self.lang]["desc"], font=("Segoe UI", 10), foreground="#444", wraplength=460, justify="left")
         self.label_desc.pack(pady=(0, 10))
+
+        # Enlace de descarga de ffmpeg Essentials
+        self.link_ffmpeg = ttk.Label(
+            frame,
+            text="Descargar FFmpeg Essentials (.msi)",
+            font=("Segoe UI", 10, "underline"),
+            foreground="#0078d7",
+            cursor="hand2"
+        )
+        self.link_ffmpeg.pack(pady=(0, 8))
+        self.link_ffmpeg.bind(
+            "<Button-1>",
+            lambda e: self.abrir_url("https://github.com/icedterminal/ffmpeg-installer/releases/")
+        )
 
         # Campo URL resaltado en rojo
         self.entry_url = ttk.Entry(frame, width=60, font=("Segoe UI", 11))
@@ -232,7 +256,6 @@ class AppUI:
                 messagebox.showerror(self.idiomas[self.lang]["error"], self.idiomas[self.lang]["error_stop"].format(e))
 
     def abrir_descargas(self):
-        import os
         import platform
         carpeta = os.path.abspath("descargas")
         if platform.system() == "Windows":
@@ -241,6 +264,10 @@ class AppUI:
             os.system(f"open '{carpeta}'")
         else:
             os.system(f"xdg-open '{carpeta}'")
+
+    def abrir_url(self, url):
+        import webbrowser
+        webbrowser.open_new(url)
 
     def run(self):
         self.root.mainloop()

@@ -1,87 +1,109 @@
-# Teams Video Downloader
+# 🚀 Teams Video Downloader v1.0
 
-Aplicación de escritorio para Windows que permite descargar videos de Microsoft Teams, SharePoint y OneDrive a partir de la URL del `videomanifest` usando `ffmpeg`.
+![icon](ico/favicon.ico)
 
-## Características
+**Autor:** RoanDev  
+**Versión:** 1.0  
+**Licencia:** MIT  
+**Repositorio:** https://github.com/RoanDev/teams-video-downloader
 
-- Interfaz gráfica sencilla y amigable (Tkinter).
-- Descarga automática del video usando `ffmpeg`.
-- Generación automática del nombre del archivo con fecha y hora.
-- Código modular y fácil de mantener.
+---
 
-## Requisitos
+## 🖥️ Descripción
 
-- Python 3.x
-- ffmpeg instalado y accesible desde el PATH del sistema
-- (Opcional) PyInstaller para generar el ejecutable
+Aplicación moderna y multiplataforma para Windows que permite descargar videos de Microsoft Teams, SharePoint y OneDrive a partir de la URL del `videomanifest` usando `ffmpeg`.  
+Incluye interfaz gráfica intuitiva, barra de progreso, selección de carpeta de destino, internacionalización (español/inglés), y más.
 
-### Instalación de ffmpeg en Windows
+---
 
-**Opción recomendada (instalador automático):**
-1. Ve a [https://github.com/icedterminal/ffmpeg-installer/releases/latest](https://github.com/icedterminal/ffmpeg-installer/releases/latest)
-2. Descarga el instalador `.exe` correspondiente a tu sistema.
-3. Ejecuta el instalador y sigue los pasos. El instalador configura automáticamente el PATH de Windows.
-4. Abre una nueva terminal y ejecuta `ffmpeg -version` para verificar que está correctamente instalado.
+## 🛠️ Tecnologías utilizadas
 
-**Opción manual (Gyan.dev):**
-1. Ve a [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/).
-2. Descarga el archivo **`ffmpeg-release-essentials.zip`** desde la sección "Release builds".
-3. Descomprime el archivo descargado.
-4. Dentro de la carpeta descomprimida, ubica la carpeta `bin` (contiene `ffmpeg.exe`).
-5. Agrega la ruta completa de la carpeta `bin` al **PATH** del sistema operativo Windows:
-   - Panel de control → Sistema → Configuración avanzada del sistema → Variables de entorno → Editar la variable `Path` → Agregar la ruta de la carpeta `bin`.
-6. Abre una nueva terminal y ejecuta `ffmpeg -version` para verificar que está correctamente instalado.
+- 🐍 **Python 3.11+**
+- 🖼️ **Tkinter** (Interfaz gráfica)
+- ⚙️ **ffmpeg** y **ffprobe** (procesamiento de video)
+- 📋 **pyperclip** (portapapeles)
+- 📦 **PyInstaller** (empaquetado a .exe)
+- 🗃️ **Git** (control de versiones)
 
-**Opción manual (BtbN/FFmpeg-Builds):**
-1. Ve a [https://github.com/BtbN/FFmpeg-Builds/releases/tag/latest](https://github.com/BtbN/FFmpeg-Builds/releases/tag/latest)
-2. Descarga el archivo `ffmpeg-n*-latest-win64-gpl.zip` (versión estática, 64 bits).
-3. Descomprime el archivo descargado.
-4. Dentro de la carpeta descomprimida, ubica la carpeta `bin` (contiene `ffmpeg.exe`).
-5. Agrega la ruta completa de la carpeta `bin` al **PATH** del sistema operativo Windows.
-6. Abre una nueva terminal y ejecuta `ffmpeg -version` para verificar que está correctamente instalado.
+---
 
-Todas las opciones son válidas para este proyecto, pero se recomienda el instalador automático para mayor facilidad.
+## ✨ Características principales
 
-**Guía paso a paso para instalación manual (versiones comprimidas):**
-Puedes consultar una guía ilustrada y detallada en español e inglés aquí:
-[https://www.wikihow.com/Install-FFmpeg-on-Windows](https://www.wikihow.com/Install-FFmpeg-on-Windows)
+- 🎨 Interfaz gráfica moderna y responsiva
+- 🌐 Soporte multilenguaje: Español 🇪🇸 / Inglés 🇬🇧
+- 📋 Pegado automático de la URL desde el portapapeles
+- 📂 Selección de carpeta de destino para las descargas
+- 🟩 Barra de progreso verde neón y mensajes claros
+- 🛑 Botón para detener la descarga en cualquier momento
+- 📁 Botón para abrir la carpeta de descargas al finalizar
+- 📝 Registro de errores en `app.log`
+- 🏷️ Nombre de archivo: `nombre_usuario_fecha.mp4`
+- 🛡️ Manejo robusto de errores y validación de URL
 
-## Instalación y uso
+---
 
-1. Clona este repositorio o descarga los archivos.
-2. Instala las dependencias necesarias (solo Python estándar).
-3. Asegúrate de tener `ffmpeg` instalado y en el PATH.
-4. Ejecuta la aplicación:
-   ```bash
-   python main.py
-   ```
-5. Ingresa la URL del `videomanifest` y el nombre del archivo de salida (sin `.mp4`).
-6. Haz clic en "Descargar".
+## 🏗️ Instalación y uso
 
-## Generar ejecutable (.exe)
+1. **Clona este repositorio**  
+   `git clone https://github.com/RoanDev/teams-video-downloader.git`
 
-Para crear un ejecutable para Windows:
+2. **Crea y activa un entorno virtual**  
+   `python -m venv venv`  
+   `venv\Scripts\activate`
 
-```bash
-pip install pyinstaller
-pyinstaller --onefile --windowed --name TeamsDownloader main.py
-```
+3. **Instala las dependencias**  
+   `pip install -r requirements.txt`  
+   (Si no existe, instala manualmente: `pip install pyperclip`)
 
-El ejecutable estará en la carpeta `dist`.
+4. **Instala ffmpeg y ffprobe**  
+   - Recomendado: [Instalador automático](https://github.com/icedterminal/ffmpeg-installer/releases/latest)  
+   - O manual: [Gyan.dev](https://www.gyan.dev/ffmpeg/builds/) o [BtbN/FFmpeg-Builds](https://github.com/BtbN/FFmpeg-Builds/releases/tag/latest)
 
-## Estructura del proyecto
+5. **Ejecuta la aplicación**  
+   `python main.py`
+
+6. **(Opcional) Genera el ejecutable**  
+   `pyinstaller --onefile --windowed --icon=ico/favicon.ico --name TeamsDownloader-v1.0 main.py`
+
+---
+
+## 📝 Instrucciones de uso
+
+1. Abre el video en Teams/SharePoint/OneDrive y copia la URL del `videomanifest` desde el inspector de red.
+2. La aplicación pegará automáticamente la URL si está en el portapapeles.
+3. Ingresa el nombre del archivo (sin `.mp4`), selecciona la carpeta de destino y haz clic en **Descargar**.
+4. Puedes detener la descarga en cualquier momento.
+5. Al finalizar, abre la carpeta de descargas con un solo clic.
+
+---
+
+## 📂 Estructura del proyecto
 
 ```
 app/
 ├── __init__.py
-├── ui.py
 ├── downloader.py
-└── utils.py
+├── ui.py
+├── utils.py
+ico/
+├── favicon.ico
 main.py
 README.md
 TODO.md
+.gitignore
+descargas/
 ```
 
-## Notas
+---
 
-- El usuario debe obtener la URL del `videomanifest` desde las herramientas de red del navegador (ver instrucciones en `teams2mp4.md`).
+## 🧑‍💻 Créditos
+Desarrollado por **RoanDev**
+¡Gracias por usar y compartir esta herramienta! ⭐
+
+---
+
+## ⚠️ Descargo de responsabilidad
+
+Esta herramienta es solo para fines educativos y personales.
+El uso para descargar contenido protegido sin permiso puede violar los términos de servicio de Microsoft y derechos de autor.
+El autor no se responsabiliza por el uso indebido del software ni por posibles consecuencias legales.
