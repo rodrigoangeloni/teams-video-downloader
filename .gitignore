@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# VSCode
+.vscode/
+
+# Descargas y archivos temporales
+descargas/
+*.mp4
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Otros
+.idea/
+*.swp
