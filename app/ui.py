@@ -62,7 +62,7 @@ class AppUI:
 
         self.root = tk.Tk()
         self.root.title(self.idiomas[self.lang]["title"])
-        self.root.geometry("510x540")
+        self.root.geometry("520x560")
         self.root.resizable(True, True)
         self.root.configure(bg="#f4f6fb")
 
