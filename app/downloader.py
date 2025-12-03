@@ -1,6 +1,10 @@
 import subprocess
 import threading
 import datetime
+import sys
+
+# Flag para ocultar ventanas de consola en Windows
+CREATE_NO_WINDOW = 0x08000000 if sys.platform == "win32" else 0
 
 def log_event(mensaje):
     with open("app.log", "a", encoding="utf-8") as f:
@@ -38,7 +42,7 @@ class Downloader:
                         "ffprobe", "-v", "error", "-show_entries",
                         "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", url
                     ]
-                    probe = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=15)
+                    probe = subprocess.run(probe_cmd, capture_output=True, text=True, timeout=15, creationflags=CREATE_NO_WINDOW)
                     if probe.returncode != 0:
                         log_event(f"ffprobe error: {probe.stderr}")
                         callback(False, "No se pudo obtener la duración del video. Verifica la URL o tu conexión.")
@@ -58,7 +62,8 @@ class Downloader:
                         stdout=subprocess.PIPE,
                         stderr=subprocess.PIPE,
                         universal_newlines=True,
-                        bufsize=1
+                        bufsize=1,
+                        creationflags=CREATE_NO_WINDOW
                     )
                 except FileNotFoundError:
                     callback(False, "No se encontró ffmpeg en el PATH del sistema. Instala ffmpeg y reinicia la aplicación.")

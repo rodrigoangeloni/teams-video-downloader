@@ -207,7 +207,9 @@ class AppUI:
         if not nombre or nombre == self.idiomas[self.lang]["name_placeholder"]:
             nombre = "teamsvideo"
         url_limpia = extraer_url_videomanifest(url)
-        nombre_archivo = generar_nombre_archivo(nombre)
+        carpeta = self.carpeta_destino.get()
+        nombre_archivo = generar_nombre_archivo(nombre, carpeta)
+        self._carpeta_actual = carpeta  # Guardar para usar en abrir_descargas
         self.label_estado.config(text=self.idiomas[self.lang]["downloading"], foreground="#0078d7")
         self.btn_descargar.config(state=tk.DISABLED)
         self.btn_detener.config(state=tk.NORMAL)
@@ -257,7 +259,9 @@ class AppUI:
 
     def abrir_descargas(self):
         import platform
-        carpeta = os.path.abspath("descargas")
+        # Usar la carpeta de la última descarga o la seleccionada actualmente
+        carpeta = getattr(self, '_carpeta_actual', self.carpeta_destino.get())
+        carpeta = os.path.abspath(carpeta)
         if platform.system() == "Windows":
             os.startfile(carpeta)
         elif platform.system() == "Darwin":

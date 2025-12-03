@@ -4,19 +4,19 @@ import datetime
 import re
 import os
 
-def generar_nombre_archivo(nombre_base):
+def generar_nombre_archivo(nombre_base, carpeta="descargas"):
     """
     Genera el nombre completo del archivo de video a guardar, con formato:
-    nombre_usuario_fecha.mp4, dentro de la carpeta 'descargas'.
+    nombre_usuario_fecha.mp4, dentro de la carpeta especificada.
 
     Args:
         nombre_base (str): Nombre base ingresado por el usuario.
+        carpeta (str): Carpeta de destino para el archivo. Por defecto 'descargas'.
 
     Returns:
         str: Ruta completa del archivo de salida.
     """
     fecha = datetime.datetime.now().strftime("%Y-%m-%d_%H%M")
-    carpeta = "descargas"
     if not os.path.exists(carpeta):
         os.makedirs(carpeta)
     return os.path.join(carpeta, f"{nombre_base}_{fecha}.mp4")

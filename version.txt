@@ -2,8 +2,8 @@
 # UTF-8
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 0, 0, 0),
-    prodvers=(1, 0, 0, 0),
+    filevers=(1, 1, 0, 0),
+    prodvers=(1, 1, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -18,12 +18,12 @@ VSVersionInfo(
         '040904B0',
         [StringStruct('CompanyName', 'RoanDev'),
         StringStruct('FileDescription', 'Teams Video Downloader'),
-        StringStruct('FileVersion', '1.0.0.0'),
+        StringStruct('FileVersion', '1.1.0.0'),
         StringStruct('InternalName', 'TeamsDownloader'),
         StringStruct('LegalCopyright', 'Copyright (c) RoanDev 2025'),
-        StringStruct('OriginalFilename', 'TeamsDownloader-v1.0.exe'),
+        StringStruct('OriginalFilename', 'TeamsDownloader-v1.1.exe'),
         StringStruct('ProductName', 'Teams Video Downloader'),
-        StringStruct('ProductVersion', '1.0.0.0')])
+        StringStruct('ProductVersion', '1.1.0.0')])
       ]), 
     VarFileInfo([VarStruct('Translation', [1033, 1200])])
   ]
