@@ -5,7 +5,7 @@
 **Autor:** RoanDev  
 **Versión:** 1.2  
 **Licencia:** MIT  
-**Repositorio:** https://github.com/RoanDev/teams-video-downloader
+**Repositorio:** https://github.com/rodrigoangeloni/teams-video-downloader
 
 ---
 
@@ -56,7 +56,7 @@ Incluye interfaz gráfica intuitiva, barra de progreso, selección de carpeta de
 ## 🏗️ Instalación y uso
 
 1. **Clona este repositorio**  
-   `git clone https://github.com/RoanDev/teams-video-downloader.git`
+   `git clone https://github.com/rodrigoangeloni/teams-video-downloader.git`
 
 2. **Crea y activa un entorno virtual**  
    `python -m venv venv`  
