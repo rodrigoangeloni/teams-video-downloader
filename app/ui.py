@@ -18,20 +18,20 @@ class AppUI:
             pyperclip = None
         self.idiomas = {
             "es": {
-                "title": "Descargador de videos de Teams",
-                "desc": "1. Copia la URL del 'videomanifest' desde el inspector de red de tu navegador.\n2. Pega la URL en el campo resaltado en rojo.\n3. Ingresa el nombre del archivo (sin .mp4).\n4. Haz clic en 'Descargar'. Puedes detener la descarga en cualquier momento.\n5. Al finalizar, puedes abrir la carpeta de descargas directamente.",
-                "url_placeholder": "URL del videomanifest...",
+                "title": "Descargador de Videos de Teams",
+                "desc": "Instrucciones:\n\n1. Copia la URL del 'videomanifest' desde el inspector de red (F12)\n2. Pega la URL en el campo verde\n3. Escribe un nombre para el archivo\n4. Haz clic en Descargar\n5. ¡Listo! Abre la carpeta de descargas",
+                "url_placeholder": "Pega aquí la URL del videomanifest...",
                 "name_placeholder": "Nombre del archivo (sin .mp4)...",
-                "dest_folder": "Carpeta de destino:",
+                "dest_folder": "Carpeta:",
                 "select_folder": "Seleccionar...",
                 "download": "Descargar",
                 "stop": "Detener descarga",
                 "open_folder": "Abrir carpeta de descargas",
-                "ready": "Listo",
+                "ready": "Listo para iniciar descarga",
                 "downloading": "Descargando...",
                 "completed": "Descarga completada:",
                 "error": "Error en la descarga",
-                "success": "Éxito",
+                "success": "¡Éxito!",
                 "file_saved": "Video guardado como:\n{}",
                 "error_url": "Por favor, ingresa la URL del videomanifest.",
                 "error_stop": "No se pudo detener la descarga: {}",
@@ -39,19 +39,19 @@ class AppUI:
             },
             "en": {
                 "title": "Teams Video Downloader",
-                "desc": "1. Copy the 'videomanifest' URL from your browser's network inspector.\n2. Paste the URL in the red highlighted field.\n3. Enter the file name (without .mp4).\n4. Click 'Download'. You can stop the download at any time.\n5. When finished, you can open the downloads folder directly.",
-                "url_placeholder": "Paste videomanifest URL...",
+                "desc": "Instructions:\n\n1. Copy the 'videomanifest' URL from network inspector (F12)\n2. Paste the URL in the green field\n3. Enter a name for the file\n4. Click Download\n5. Done! Open the downloads folder",
+                "url_placeholder": "Paste videomanifest URL here...",
                 "name_placeholder": "File name (without .mp4)...",
-                "dest_folder": "Destination folder:",
+                "dest_folder": "Folder:",
                 "select_folder": "Select...",
                 "download": "Download",
                 "stop": "Stop download",
                 "open_folder": "Open downloads folder",
-                "ready": "Ready",
+                "ready": "Ready to download",
                 "downloading": "Downloading...",
                 "completed": "Download completed:",
                 "error": "Download error",
-                "success": "Success",
+                "success": "Success!",
                 "file_saved": "Video saved as:\n{}",
                 "error_url": "Please enter the videomanifest URL.",
                 "error_stop": "Could not stop download: {}",
@@ -62,7 +62,7 @@ class AppUI:
 
         self.root = tk.Tk()
         self.root.title(self.idiomas[self.lang]["title"])
-        self.root.geometry("520x560")
+        self.root.geometry("520x650")
         self.root.resizable(True, True)
         self.root.configure(bg="#f4f6fb")
 
@@ -101,6 +101,20 @@ class AppUI:
         self.combo_idioma.current(0)
         self.combo_idioma.pack(side="left", padx=(6, 0))
         self.combo_idioma.bind("<<ComboboxSelected>>", self.cambiar_idioma)
+
+        # Icono de la aplicación sobre el título
+        self.logo_image = None
+        if os.path.exists(icon_path):
+            try:
+                from PIL import Image, ImageTk
+                img = Image.open(icon_path)
+                img = img.resize((48, 48), Image.Resampling.LANCZOS)
+                self.logo_image = ImageTk.PhotoImage(img)
+                self.label_logo = ttk.Label(frame, image=self.logo_image, background="#f4f6fb")
+                self.label_logo.pack(pady=(0, 4))
+            except ImportError:
+                # PIL no disponible, continuar sin logo
+                pass
 
         self.label_title = ttk.Label(frame, text=self.idiomas[self.lang]["title"], font=("Segoe UI", 16, "bold"), foreground="#0078d7")
         self.label_title.pack(pady=(0, 8))

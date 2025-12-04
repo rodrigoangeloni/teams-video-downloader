@@ -1,9 +1,9 @@
-# 🚀 Teams Video Downloader v1.0
+# 🚀 Teams Video Downloader v1.2
 
-![icon](ico/favicon.ico)
+![Captura de pantalla](captura-v1.jpg)
 
 **Autor:** RoanDev  
-**Versión:** 1.0  
+**Versión:** 1.2  
 **Licencia:** MIT  
 **Repositorio:** https://github.com/RoanDev/teams-video-downloader
 
@@ -11,17 +11,28 @@
 
 ## 🖥️ Descripción
 
-Aplicación moderna y multiplataforma para Windows que permite descargar videos de Microsoft Teams, SharePoint y OneDrive a partir de la URL del `videomanifest` usando `ffmpeg`.  
+Aplicación moderna para Windows que permite descargar videos de Microsoft Teams, SharePoint y OneDrive a partir de la URL del `videomanifest` usando `ffmpeg`.  
 Incluye interfaz gráfica intuitiva, barra de progreso, selección de carpeta de destino, internacionalización (español/inglés), y más.
+
+---
+
+## 🆕 Novedades v1.2
+
+- 🔇 Las ventanas CMD ya no aparecen durante la descarga (proceso silencioso)
+- 📂 Corregido: la selección de carpeta de destino ahora funciona correctamente
+- 🖼️ Logo de la aplicación visible en la interfaz
+- 🎨 Interfaz mejorada con instrucciones más claras
+- 📏 Ventana redimensionada para mejor visualización
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-- 🐍 **Python 3.11+**
+- 🐍 **Python 3.10+**
 - 🖼️ **Tkinter** (Interfaz gráfica)
+- 🖼️ **Pillow** (Procesamiento de imágenes)
 - ⚙️ **ffmpeg** y **ffprobe** (procesamiento de video)
-- 📋 **pyperclip** (portapapeles)
+- 📋 **pyperclip** (portapapeles, opcional)
 - 📦 **PyInstaller** (empaquetado a .exe)
 - 🗃️ **Git** (control de versiones)
 
@@ -63,7 +74,9 @@ Incluye interfaz gráfica intuitiva, barra de progreso, selección de carpeta de
    `python main.py`
 
 6. **(Opcional) Genera el ejecutable**  
-   `pyinstaller --onefile --windowed --icon=ico/favicon.ico --name TeamsDownloader-v1.0 main.py`
+   `python build_exe.py`  
+   O directamente:  
+   `pyinstaller --onefile --windowed --icon=ico/favicon.ico --name TeamsDownloader-v1.2 main.py`
 
 ---
 
@@ -87,7 +100,11 @@ app/
 ├── utils.py
 ico/
 ├── favicon.ico
+.github/
+├── copilot-instructions.md
 main.py
+build_exe.py
+version.txt
 README.md
 TODO.md
 .gitignore

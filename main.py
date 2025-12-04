@@ -1,11 +1,11 @@
 """
-Teams Video Downloader v1.1
+Teams Video Downloader v1.2
 
 Autor: RoanDev
 Repositorio: https://github.com/RoanDev/teams-video-downloader
 """
 
-__version__ = "1.1"
+__version__ = "1.2"
 __author__ = "RoanDev"
 
 from app.ui import AppUI
